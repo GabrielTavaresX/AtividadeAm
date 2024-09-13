@@ -1,16 +1,15 @@
 
-import { StatusBar } from 'expo-status-bar';
-import { Navigation } from './src/navigation';
-import { AuthProvider } from './src/context/auth';
-import 'react-native-gesture-handler';
+import { StatusBar } from "expo-status-bar";
+import { Navigation } from "./src/navigation";
+import { AuthProvider } from "./src/context/auth";
 
-export default function App() {
+export default function App(){
   return (
     <>
-      <AuthProvider>
-        <Navigation />
-      </AuthProvider>
-      <StatusBar style='auto' />
+    <AuthProvider>
+      <Navigation />
+    </AuthProvider>
+    <StatusBar style="auto" />
     </>
-  )
+  );
 }

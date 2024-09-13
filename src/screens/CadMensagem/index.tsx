@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MessageTypes } from "../../navigation/message.navigation";
 import { Alert, KeyboardAvoidingView, Text, TextInput, View } from "react-native";
 import { colors } from "../../styles/GlobalStyles";
-import { ComponentBottonInterface } from "../../components";
+import { ComponentButtonInterface } from "../../components";
 import { IMessage } from "../../service/data/Message";
 import { useAuth } from "../../hook/auth";
 import { AxiosError } from "axios";
@@ -57,9 +57,9 @@ return (
                     onChangeText={(i) => handleChange({ message: i})}
                 />
             </View>
-            <ComponentBottonInterface title="Enviar" type ="secondary"
+            <ComponentButtonInterface title="Enviar" type ="secondary"
                 onPressI={handleCadMessage} />
-                <ComponentBottonInterface title="Voltar" type ="secondary"
+                <ComponentButtonInterface title="Voltar" type ="secondary"
                 onPressI={() => navigation.navigate("Message")} />
         </KeyboardAvoidingView>
     </View>
