@@ -1,50 +1,50 @@
-import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { Perfil } from '../screens'
-import { colors } from '../styles/colors';
-import { Feather, FontAwesome } from '@expo/vector-icons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import React from 'react';
-import {MessageNavigation} from './message.navigation'
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { createBottomTabNavigator, BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+import { ScreenPerfil, ScreenMensagem} from '../screens';
+import { Ionicons, FontAwesome, FontAwesome6, AntDesign } from '@expo/vector-icons';
+import { colors } from '../styles/GlobalStyles';
 
 
-type TabParamList = {
+type MenuTabParam = {
     Perfil: undefined
     Mensagem: undefined
 }
 
-type TabScreenNavigationProp = BottomTabNavigationProp<TabParamList, 'Perfil'>
-export type TabTypes = {
-    navigation: TabScreenNavigationProp
+type MenuScreenNavigation = BottomTabNavigationProp<MenuTabParam, "Perfil">
+export type MenuTabTypes = {
+    navigation: MenuScreenNavigation
 }
 
 export function TabNavigation() {
-    const Tab = createBottomTabNavigator<TabParamList>()
-        return (
+    const Tab = createBottomTabNavigator<MenuTabParam>();
+    return (
         <Tab.Navigator
-            screenOptions={{
-                tabBarActiveBackgroundColor: colors.secondary,
-                tabBarActiveTintColor: colors.white,
-                headerShown: false,
-                tabBarInactiveBackgroundColor: colors.secondary,
-                tabBarInactiveTintColor: colors.white,
-            }}
+        screenOptions={{
+            tabBarActiveBackgroundColor: colors.secondary,
+            tabBarActiveTintColor: colors.white,
+            headerShown: false,
+            tabBarInactiveBackgroundColor: colors.secondary,
+            tabBarInactiveTintColor: colors.white
+        }}
         >
-
-        <Tab.Screen name='Perfil' component = {Perfil}
-            options={{
-            tabBarIcon: () =>(
-                <FontAwesome5 name="skull-crossbones" size={24} color="black" />
-            ),
-            }}
-        />
-        <Tab.Screen name='Mensagem' component= {MessageNavigation}
+            <Tab.Screen name="Perfil" component={ScreenPerfil}
                 options={{
                     tabBarIcon: () => (
-                        <FontAwesome5 name="skull" size={24} color="black" />
-                    ),
+                        <FontAwesome name="user-o" size={24} color="black" />
+                   )
                 }}
-        />
+
+            />
+
+
+            <Tab.Screen name='Mensagem' component={ScreenMensagem}
+                options={{
+                    tabBarIcon: () => (
+                        <FontAwesome6 name="message" size={24} color="black" />
+                    ),
+                }}  
+            />
+
+
         </Tab.Navigator>
-        )
+    )
 }

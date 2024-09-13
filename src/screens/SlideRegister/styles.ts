@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../styles/GlobalStyles";
+import { StyleSheet } from 'react-native';
+import { colors } from '../../styles/GlobalStyles';
 
 export const styles = StyleSheet.create({
     container: {
@@ -15,11 +15,16 @@ export const styles = StyleSheet.create({
     },
     formRow: {
         margin: 10,
-        flexDirection: 'row',
+        flexDirection: "row",
         alignItems: "center",
         borderWidth: 0.7,
-        borderColor: colors.primary,
+        borderColor: colors.secondary,
         borderRadius: 5
+    },
+    icon: {
+        fontSize: 28,
+        color: colors.secondary,
+        padding: 5
     },
     input: {
         fontSize: 18,

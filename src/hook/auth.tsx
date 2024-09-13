@@ -1,10 +1,10 @@
-import { useContext } from "react"
-import { AuthContext, IAuthContextData } from "../context/auth"
+import { useContext } from "react";
+import { AuthContext, IAuthContextData } from "../context/auth";
 
 export function useAuth(): IAuthContextData {
     const context = useContext(AuthContext)
     if (!context) {
-        throw new Error('useAuth deve ser utilizado com o AuthProvider')
+        throw new Error('useAuth deve ser utilizado com AuthProvide')
     }
     return context
 }

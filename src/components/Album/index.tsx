@@ -1,32 +1,33 @@
-import {useEffect, useState} from "react";
-import * as MediaLibary from "expo-media-library";
-import {styles} from "./styles"
-import { View, Image, Text } from "react-native";
+import { useEffect, useState } from "react";
+import * as MediaLibrary from 'expo-media-library';
+import { Image, Text, View } from 'react-native';
+import { styles } from "./styles";
 
 interface IAlbum {
-    album: MediaLibary.Album
+    album: MediaLibrary.Album
 }
-export function Album({album}:IAlbum){
-    const [assets,setAssets] = useState<MediaLibary.Asset[]>([]);
 
-  useEffect(() => {
-    async function getAlbumAssets(){
-        const albumAssets = await MediaLibary.getAssetsAsync({album});
-        setAssets(albumAssets.assets);
-    }
-    getAlbumAssets();
+export function Album({ album }: IAlbum) {
+    const [assets, setAssets] = useState<MediaLibrary.Asset[]>([]);
 
-  }, [album]);
-  return (
-     <View key={album.id} style={styles.albumContainer}>
-        <Text>
-            {album.title} - {album.assetCount ?? 'no'} assets
-        </Text>
-        <View style={styles.albumAssetsContainer}>
-          {assets && assets.map((asset)=>(
-            <Image source={{uri: asset.uri}} width={50} height={50} />
-          ))}
+    useEffect(() => {
+        async function getAlbumAssets() {
+            const albunAssets = await MediaLibrary.getAssetsAsync({ album });
+            setAssets(albunAssets.assets)
+        }
+        getAlbumAssets();
+    }, [album]);
+
+    return (
+        <View key={album.id} style={styles.albumContainer}>
+            <Text>
+                {album.title} - {album.assetCount ?? 'no'} assets
+            </Text>
+            <View style={styles.albumAssetsContainer}>
+                {assets  && assets.map((asset) => (
+                    <Image source={{ uri: asset.uri }} width={50} height={50} />
+                ))}
+            </View>
         </View>
-     </View>
-  )
+    )
 }

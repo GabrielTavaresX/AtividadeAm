@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    
     albumContainer: {
         paddingHorizontal: 20,
         marginBottom: 12,
@@ -10,5 +11,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
       },
-    });
+
     
+});
