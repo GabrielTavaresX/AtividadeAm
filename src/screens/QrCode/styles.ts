@@ -1,5 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
-
+import { Dimensions, StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
@@ -12,5 +11,5 @@ export const styles = StyleSheet.create({
     qrcode: {
         width: Dimensions.get('screen').width,
         height: Dimensions.get('screen').width,
-    },
-})
+    },  
+});

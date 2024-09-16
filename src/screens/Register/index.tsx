@@ -9,6 +9,13 @@ import { AxiosError } from 'axios';
 import { apiUser } from '../../services/data';
 import { useAuth } from '../../hook/auth';
 
+export interface IError {
+    errors: {
+        rule: string
+        field: string
+        message: string
+    }[]
+}
 export interface IRegister {
 name?: string
 email?: string
@@ -24,10 +31,10 @@ export function Register({navigation} : LoginTypes) {
                 const response = await apiUser.register(data)
                 Alert.alert(`${response.data.name} cadastrado!`)
                 navigation.navigate("Login")
-            }catch (error){
-             const err= error as AxiosError
-             const msg = err.response?.data as string
-             Alert.alert(msg)
+            } catch (error) {
+                const err = error as AxiosError
+                const msg = (err.response?.data as IError)
+                Alert.alert(msg.errors.reduce((total, atual) => total + atual.message, ''))
             }
             setLoading(false)
          }else{
@@ -61,7 +68,7 @@ export function Register({navigation} : LoginTypes) {
                     style={styles.input}
                     placeholder = "Email"
                     keyboardType = "email-address"
-                    autoCapitalize = "nome"
+                    autoCapitalize="none"
                     onChangeText = {(i) => handleChange({ email: i })}
                     />
             </View>
@@ -72,7 +79,7 @@ export function Register({navigation} : LoginTypes) {
             style = {styles.input}
             placeholder = "Senha" 
             secureTextEntry = {true}
-            autoCapitalize="nome"
+            autoCapitalize="none"
             onChangeText={(i) => handleChange ({password: i})}
             />
             </View>
